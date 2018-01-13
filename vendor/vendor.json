@@ -1,0 +1,133 @@
+{
+	"comment": "",
+	"ignore": "test",
+	"package": [
+		{
+			"checksumSHA1": "B7N8ClCrkhPc4G13oY4NxXZPm90=",
+			"path": "github.com/hashicorp/consul/api",
+			"revision": "410e96108a216ec4a429966d23e1f1be78cee87f",
+			"revisionTime": "2018-01-12T21:23:16Z"
+		},
+		{
+			"checksumSHA1": "YAq1rqZIp+M74Q+jMBQkkMKm3VM=",
+			"path": "github.com/hashicorp/go-cleanhttp",
+			"revision": "d5fe4b57a186c716b0e00b8c301cbd9b4182694d",
+			"revisionTime": "2017-12-18T14:54:08Z"
+		},
+		{
+			"checksumSHA1": "A1PcINvF3UiwHRKn8UcgARgvGRs=",
+			"path": "github.com/hashicorp/go-rootcerts",
+			"revision": "6bb64b370b90e7ef1fa532be9e591a81c3493e00",
+			"revisionTime": "2016-05-03T14:34:40Z"
+		},
+		{
+			"checksumSHA1": "mS15CkImPzXYsgNwl3Mt9Gh3Vb0=",
+			"path": "github.com/hashicorp/serf/coordinate",
+			"revision": "2d88a6b2e9b81cce923ee42c25bfa8da841e17a0",
+			"revisionTime": "2018-01-10T03:48:51Z"
+		},
+		{
+			"checksumSHA1": "nRQ0bYMcA/f2QX+J8J/6/u1dcCE=",
+			"path": "github.com/json-iterator/go",
+			"revision": "c3ed5e85e01b662dce06b590ba4262266acbc73a",
+			"revisionTime": "2018-01-09T10:30:25Z"
+		},
+		{
+			"checksumSHA1": "V/quM7+em2ByJbWBLOsEwnY3j/Q=",
+			"path": "github.com/mitchellh/go-homedir",
+			"revision": "b8bc1bf767474819792c23f32d8286a45736f1c6",
+			"revisionTime": "2016-12-03T19:45:07Z"
+		},
+		{
+			"checksumSHA1": "tWUjKyFOGJtYExocPWVYiXBYsfE=",
+			"path": "github.com/mitchellh/hashstructure",
+			"revision": "2bca23e0e452137f789efbc8610126fd8b94f73b",
+			"revisionTime": "2017-06-09T04:59:27Z"
+		},
+		{
+			"checksumSHA1": "+kXkz5FohsPzWFk3Bhj1HNqzp1k=",
+			"path": "github.com/nats-io/go-nats",
+			"revision": "d66cb54e6b7bdd93f0b28afc8450d84c780dfb68",
+			"revisionTime": "2017-12-20T17:16:17Z"
+		},
+		{
+			"checksumSHA1": "Q2c9uTEIGhSIddv5pntYdFNtUdk=",
+			"path": "github.com/nats-io/go-nats/encoders/builtin",
+			"revision": "d66cb54e6b7bdd93f0b28afc8450d84c780dfb68",
+			"revisionTime": "2017-12-20T17:16:17Z"
+		},
+		{
+			"checksumSHA1": "K3GMvVTn1nlWpwLV+NCfDdfIt3I=",
+			"path": "github.com/nats-io/go-nats/util",
+			"revision": "d66cb54e6b7bdd93f0b28afc8450d84c780dfb68",
+			"revisionTime": "2017-12-20T17:16:17Z"
+		},
+		{
+			"checksumSHA1": "wcu8OXDGeGvmK9JY73+aoOQf1Ho=",
+			"path": "github.com/nats-io/nuid",
+			"revision": "33c603157d6fd1b0ac2599bcc4a286b36479a06d",
+			"revisionTime": "2017-10-25T20:31:29Z"
+		},
+		{
+			"checksumSHA1": "qdAp/Jklzmv271WAlGcdh+AaGho=",
+			"path": "github.com/nzgogo/micro",
+			"revision": "24e2112dc20c97d5d1a83184cb17bb34372c60d5",
+			"revisionTime": "2018-01-13T02:26:25Z",
+			"version": "async",
+			"versionExact": "async"
+		},
+		{
+			"checksumSHA1": "wpA3YpI4gYZWEHzXx9TRvx+8zZk=",
+			"path": "github.com/nzgogo/micro/codec",
+			"revision": "24e2112dc20c97d5d1a83184cb17bb34372c60d5",
+			"revisionTime": "2018-01-13T02:26:25Z",
+			"version": "async",
+			"versionExact": "async"
+		},
+		{
+			"checksumSHA1": "fPDVgzyQmaAaz26nucGDVOCls7w=",
+			"path": "github.com/nzgogo/micro/context",
+			"revision": "24e2112dc20c97d5d1a83184cb17bb34372c60d5",
+			"revisionTime": "2018-01-13T02:26:25Z",
+			"version": "async",
+			"versionExact": "async"
+		},
+		{
+			"checksumSHA1": "L/oTXJ37rbAaJjqfMPCW3UFjQ/I=",
+			"path": "github.com/nzgogo/micro/registry",
+			"revision": "24e2112dc20c97d5d1a83184cb17bb34372c60d5",
+			"revisionTime": "2018-01-13T02:26:25Z",
+			"version": "async",
+			"versionExact": "async"
+		},
+		{
+			"checksumSHA1": "iMZgBHCvFVocgzoEtuXtWmnszdQ=",
+			"path": "github.com/nzgogo/micro/router",
+			"revision": "24e2112dc20c97d5d1a83184cb17bb34372c60d5",
+			"revisionTime": "2018-01-13T02:26:25Z",
+			"version": "async",
+			"versionExact": "async"
+		},
+		{
+			"checksumSHA1": "+8pVW6Go8u7QqvHzFoGU9GTcCvE=",
+			"path": "github.com/nzgogo/micro/transport",
+			"revision": "24e2112dc20c97d5d1a83184cb17bb34372c60d5",
+			"revisionTime": "2018-01-13T02:26:25Z",
+			"version": "async",
+			"versionExact": "async"
+		},
+		{
+			"checksumSHA1": "eDQ6f1EsNf+frcRO/9XukSEchm8=",
+			"path": "github.com/satori/go.uuid",
+			"revision": "36e9d2ebbde5e3f13ab2e25625fd453271d6522e",
+			"revisionTime": "2018-01-03T17:44:51Z"
+		},
+		{
+			"checksumSHA1": "GtamqiJoL7PGHsN454AoffBFMa8=",
+			"path": "golang.org/x/net/context",
+			"revision": "5ccada7d0a7ba9aeb5d3aca8d3501b4c2a509fec",
+			"revisionTime": "2018-01-12T01:53:59Z"
+		}
+	],
+	"rootPath": "examples"
+}
