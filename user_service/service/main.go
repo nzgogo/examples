@@ -1,42 +1,33 @@
 package main
 
 import (
+	"examples/user_service/service/db"
+	"examples/user_service/service/server"
 	"log"
 
 	"github.com/nzgogo/micro"
-	"github.com/nzgogo/micro/db"
 )
 
-type Server struct {
-	srv gogo.Service
-	db  db.DB
-}
+const (
+	SrvName    = "gogox-core-hello"
+	SrvVersion = "v1"
+)
 
 func main() {
-	srv := gogo.NewService(
-		"gogox-core-hello",
-		"v1",
-	)
+	srv := gogo.NewService(SrvName, SrvVersion)
 
-	server := Server{
-		srv: srv,
-		db: db.NewDB(
-			"gogo",
-			"gogox123",
-			"test",
-			db.Address("gogo-api-test.c69ll9boyxmw.ap-southeast-2.rds.amazonaws.com"),
-		),
-	}
+	server.Service = srv
+	server.DB = db.NewDB()
 
-	defer server.db.Close()
+	defer server.DB.Close()
 
-	server.srv.Options().Transport.SetHandler(srv.ServerHandler)
+	server.Service.Options().Transport.SetHandler(srv.ServerHandler)
 
-	if err := server.srv.Init(); err != nil {
+	if err := server.Service.Init(); err != nil {
 		log.Fatal(err)
 	}
 
-	if err := server.srv.Run(); err != nil {
+	if err := server.Service.Run(); err != nil {
 		log.Fatal(err)
 	}
 }
