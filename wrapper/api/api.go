@@ -72,7 +72,13 @@ func main() {
 
 	service.Options().Transport.SetHandler(service.ApiHandler)
 
-	if err := service.Init(gogo.WrapRepsWriter(logHttpRespwrapper)); err != nil {
+
+	var respWrapChain = []gogo.HttpResponseWrapper{
+		logHttpRespWrapper,
+		logHttpRespWrapper2,
+		logHttpRespWrapper3,
+	}
+	if err := service.Init(gogo.WrapRepsWriter(respWrapChain...)); err != nil {
 
 		log.Fatal(err)
 	}
@@ -91,8 +97,11 @@ func main() {
 
 	// Http wrapper
 	var httpChain = []gogo.HttpHandlerWrapper{
-		logwrapper,
+		logWrapper,
+		logWrapper2,
+		logWrapper3,
 	}
+
 	http.HandleFunc("/", gogo.HttpWrapperChain(handler.ServeHTTP, httpChain...))
 
 	go func() {
