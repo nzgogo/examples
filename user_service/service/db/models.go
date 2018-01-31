@@ -4,16 +4,27 @@ import (
 	"time"
 
 	"github.com/jinzhu/gorm"
+	uuid "github.com/satori/go.uuid"
 )
 
 type User struct {
-	ID        string `gorm:"type:varchar(36);primary_key"`
-	Email     string `gorm:"type:varchar(255);unique"`
+	ID        string `gorm:"size:36;primary_key"`
+	Email     string `gorm:"size:255;unique"`
 	Password  string `gorm:"size:255"`
 	Roles     []Role `gorm:"many2many:user_roles;"`
 	CreatedAt time.Time
 	UpdatedAt time.Time
 	DeletedAt *time.Time
+}
+
+func (u *User) BeforeCreate(scope *gorm.Scope) error {
+	for {
+		if id, err := uuid.NewV4(); err == nil {
+			scope.SetColumn("ID", id.String())
+			break
+		}
+	}
+	return nil
 }
 
 type Role struct {
