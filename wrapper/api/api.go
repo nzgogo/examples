@@ -72,7 +72,7 @@ func main() {
 
 	service.Options().Transport.SetHandler(service.ApiHandler)
 
-	if err := service.Init(); err != nil {
+	if err := service.Init(gogo.WrapRepsWriter(logHttpRespwrapper)); err != nil {
 
 		log.Fatal(err)
 	}

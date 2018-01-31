@@ -36,7 +36,7 @@ func main() {
 
 	server.srv = service
 
-	if err := server.srv.Init(gogo.WrapHandler(logMsgwrapper),gogo.WrapRepsWriter(logHttpRespwrapper)); err != nil {
+	if err := server.srv.Init(gogo.WrapHandler(logMsgwrapper)); err != nil {
 		log.Fatal(err)
 	}
 
