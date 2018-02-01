@@ -3,9 +3,9 @@ package user
 import (
 	"examples/user_service/service/db"
 	"examples/user_service/service/server"
-	"micro/router"
 
 	"github.com/nzgogo/micro/codec"
+	"github.com/nzgogo/micro/router"
 )
 
 var (
@@ -27,7 +27,7 @@ func CreateUser(msg *codec.Message, reply string) *router.Error {
 	dbConn.Create(&user)
 
 	resp := codec.NewJsonResponse(msg.ContextID, 201, user)
-	srv.Respond(resp, reply)
+	server.Service.Respond(resp, reply)
 
 	return nil
 }
@@ -42,7 +42,7 @@ func GetUser(msg *codec.Message, reply string) *router.Error {
 		if user.ID == "" {
 			return &router.Error{StatusCode: 404, Message: "User not found!"}
 		} else {
-			srv.Respond(
+			server.Service.Respond(
 				codec.NewJsonResponse(msg.ContextID, 200, user),
 				reply,
 			)
@@ -54,10 +54,10 @@ func GetUser(msg *codec.Message, reply string) *router.Error {
 	return nil
 }
 
-func UpdateUser(msg *codec.Message, reply string) error {
+func UpdateUser(msg *codec.Message, reply string) *router.Error {
 	return nil
 }
 
-func DeleteUser(msg *codec.Message, reply string) error {
+func DeleteUser(msg *codec.Message, reply string) *router.Error {
 	return nil
 }

@@ -1,11 +1,17 @@
 package server
 
 import (
+	"examples/user_service/service/db"
+
 	"github.com/nzgogo/micro"
-	"github.com/nzgogo/micro/db"
+)
+
+const (
+	SrvName    = "gogo-core-hello"
+	SrvVersion = "v1"
 )
 
 var (
-	Service gogo.Service
-	DB      db.DB
+	Service = gogo.NewService(SrvName, SrvVersion)
+	DB      = db.NewDB()
 )
