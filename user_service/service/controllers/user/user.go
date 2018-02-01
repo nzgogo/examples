@@ -3,6 +3,7 @@ package user
 import (
 	"examples/user_service/service/db"
 	"examples/user_service/service/server"
+	"micro/router"
 
 	"github.com/nzgogo/micro/codec"
 )
@@ -14,7 +15,7 @@ var (
 
 // type Handler func(*codec.Message, string) error
 
-func CreateUser(msg *codec.Message, reply string) error {
+func CreateUser(msg *codec.Message, reply string) *router.Error {
 	user := db.User{}
 
 	if msg.Get("email") != "" && msg.Get("password") != "" {
@@ -31,7 +32,7 @@ func CreateUser(msg *codec.Message, reply string) error {
 	return nil
 }
 
-func GetUser(msg *codec.Message, reply string) error {
+func GetUser(msg *codec.Message, reply string) *router.Error {
 	if msg.Get("email") != "" {
 		user := db.User{}
 		dbConn.Where(&db.User{
@@ -39,10 +40,7 @@ func GetUser(msg *codec.Message, reply string) error {
 		}).First(&user)
 
 		if user.ID == "" {
-			srv.Respond(
-				codec.NewJsonResponse(msg.ContextID, 404, "User not found!"),
-				reply,
-			)
+			return &router.Error{StatusCode: 404, Message: "User not found!"}
 		} else {
 			srv.Respond(
 				codec.NewJsonResponse(msg.ContextID, 200, user),
@@ -50,10 +48,7 @@ func GetUser(msg *codec.Message, reply string) error {
 			)
 		}
 	} else {
-		srv.Respond(
-			codec.NewJsonResponse(msg.ContextID, 422, "Email not presented in request!"),
-			reply,
-		)
+		return &router.Error{StatusCode: 422, Message: "Email not presented in request!"}
 	}
 
 	return nil
