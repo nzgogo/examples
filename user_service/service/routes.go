@@ -24,6 +24,20 @@ func init() {
 		ID:      "create_single_user",
 		Handler: user.CreateUser,
 	})
+
+	routes = append(routes, &router.Node{
+		Method:  "PUT",
+		Path:    "/user",
+		ID:      "update_single_user",
+		Handler: user.UpdateUser,
+	})
+
+	routes = append(routes, &router.Node{
+		Method:  "DELETE",
+		Path:    "/user",
+		ID:      "delete_single_user",
+		Handler: user.DeleteUser,
+	})
 }
 
 func initRoutes() {

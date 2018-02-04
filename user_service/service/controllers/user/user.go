@@ -33,10 +33,10 @@ func CreateUser(msg *codec.Message, reply string) *router.Error {
 }
 
 func GetUser(msg *codec.Message, reply string) *router.Error {
-	if msg.Get("email") != "" {
+	if msg.Query.Get("email") != "" {
 		user := db.User{}
 		dbConn.Where(&db.User{
-			Email: msg.Get("email"),
+			Email: msg.Query.Get("email"),
 		}).First(&user)
 
 		if user.ID == "" {
@@ -55,9 +55,45 @@ func GetUser(msg *codec.Message, reply string) *router.Error {
 }
 
 func UpdateUser(msg *codec.Message, reply string) *router.Error {
+	if msg.Get("id") != "" {
+		user := db.User{}
+		dbConn.Where(&db.User{ID: msg.Get("id")}).First(&user)
+
+		values := msg.GetAll()
+		for k, v := range values {
+			if v == "" {
+				continue
+			}
+			switch k {
+			case "email":
+				user.Email = v
+			case "password":
+				user.Password = v
+			}
+		}
+		dbConn.Save(&user)
+
+		server.Service.Respond(
+			codec.NewJsonResponse(msg.ContextID, 200, user),
+			reply,
+		)
+	} else {
+		return &router.Error{StatusCode: 422, Message: "User ID not presented in request!"}
+	}
 	return nil
 }
 
 func DeleteUser(msg *codec.Message, reply string) *router.Error {
+	if msg.Get("id") != "" {
+		user := db.User{ID: msg.Get("id")}
+		dbConn.Delete(&user)
+
+		server.Service.Respond(
+			codec.NewJsonResponse(msg.ContextID, 200, ""),
+			reply,
+		)
+	} else {
+		return &router.Error{StatusCode: 422, Message: "User ID not presented in request!"}
+	}
 	return nil
 }
