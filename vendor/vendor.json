@@ -118,28 +118,28 @@
 			"revisionTime": "2017-10-25T20:31:29Z"
 		},
 		{
-			"checksumSHA1": "BHvIKbXP2DV1be761emcoVxk5XI=",
+			"checksumSHA1": "DUWmyMsDVNx6bITQblC4h3cbVk4=",
 			"path": "github.com/nzgogo/micro",
-			"revision": "0f9d58968da6f411d6a317e16116a74c10081e1e",
-			"revisionTime": "2018-02-04T09:03:24Z"
+			"revision": "fe5f37aebb2c1f071b4d87c04a4e69bacaaea1a5",
+			"revisionTime": "2018-02-05T03:28:54Z"
 		},
 		{
 			"checksumSHA1": "83med4uc/VKUvFFCZSj81mf4btk=",
 			"path": "github.com/nzgogo/micro/api",
-			"revision": "0f9d58968da6f411d6a317e16116a74c10081e1e",
-			"revisionTime": "2018-02-04T09:03:24Z"
+			"revision": "fe5f37aebb2c1f071b4d87c04a4e69bacaaea1a5",
+			"revisionTime": "2018-02-05T03:28:54Z"
 		},
 		{
 			"checksumSHA1": "Ph41gjsWGqrdG+swYB6d8yx/ndY=",
 			"path": "github.com/nzgogo/micro/codec",
-			"revision": "0f9d58968da6f411d6a317e16116a74c10081e1e",
-			"revisionTime": "2018-02-04T09:03:24Z"
+			"revision": "fe5f37aebb2c1f071b4d87c04a4e69bacaaea1a5",
+			"revisionTime": "2018-02-05T03:28:54Z"
 		},
 		{
 			"checksumSHA1": "VCufPc5w54yAV0CoYOsFXEoqppI=",
 			"path": "github.com/nzgogo/micro/context",
-			"revision": "0f9d58968da6f411d6a317e16116a74c10081e1e",
-			"revisionTime": "2018-02-04T09:03:24Z"
+			"revision": "fe5f37aebb2c1f071b4d87c04a4e69bacaaea1a5",
+			"revisionTime": "2018-02-05T03:28:54Z"
 		},
 		{
 			"checksumSHA1": "0DRC6cGWlpLUHoF4E2au7HFdH0g=",
@@ -150,26 +150,26 @@
 		{
 			"checksumSHA1": "L/oTXJ37rbAaJjqfMPCW3UFjQ/I=",
 			"path": "github.com/nzgogo/micro/registry",
-			"revision": "0f9d58968da6f411d6a317e16116a74c10081e1e",
-			"revisionTime": "2018-02-04T09:03:24Z"
+			"revision": "fe5f37aebb2c1f071b4d87c04a4e69bacaaea1a5",
+			"revisionTime": "2018-02-05T03:28:54Z"
 		},
 		{
 			"checksumSHA1": "u4Dkmte0WqCceXGGaxKfelW+GHI=",
 			"path": "github.com/nzgogo/micro/router",
-			"revision": "0f9d58968da6f411d6a317e16116a74c10081e1e",
-			"revisionTime": "2018-02-04T09:03:24Z"
+			"revision": "fe5f37aebb2c1f071b4d87c04a4e69bacaaea1a5",
+			"revisionTime": "2018-02-05T03:28:54Z"
 		},
 		{
 			"checksumSHA1": "TQMihUzFwy1MWA18A8HIkAEANeE=",
 			"path": "github.com/nzgogo/micro/selector",
-			"revision": "0f9d58968da6f411d6a317e16116a74c10081e1e",
-			"revisionTime": "2018-02-04T09:03:24Z"
+			"revision": "fe5f37aebb2c1f071b4d87c04a4e69bacaaea1a5",
+			"revisionTime": "2018-02-05T03:28:54Z"
 		},
 		{
 			"checksumSHA1": "69MG+A64o6X4b14l66PDpgaerbk=",
 			"path": "github.com/nzgogo/micro/transport",
-			"revision": "0f9d58968da6f411d6a317e16116a74c10081e1e",
-			"revisionTime": "2018-02-04T09:03:24Z"
+			"revision": "fe5f37aebb2c1f071b4d87c04a4e69bacaaea1a5",
+			"revisionTime": "2018-02-05T03:28:54Z"
 		},
 		{
 			"checksumSHA1": "eDQ6f1EsNf+frcRO/9XukSEchm8=",
@@ -182,6 +182,10 @@
 			"path": "google.golang.org/appengine/cloudsql",
 			"revision": "5bee14b453b4c71be47ec1781b0fa61c2ea182db",
 			"revisionTime": "2017-12-12T22:30:47Z"
+		},
+		{
+			"path": "micro/codec",
+			"revision": ""
 		}
 	],
 	"rootPath": "examples"
