@@ -8,7 +8,7 @@ import (
 )
 
 func logMsgWrapper(handler router.Handler) router.Handler {
-	return func(msg *codec.Message, reply string) error {
+	return func(msg *codec.Message, reply string) *router.Error {
 		//log.Printf("logMsgwrapper -> message received: %v\n" , *msg)
 		log.Printf("[1] logMsgwrapper before")
 		err := handler(msg, reply)
@@ -18,7 +18,7 @@ func logMsgWrapper(handler router.Handler) router.Handler {
 }
 
 func logMsgWrapper2(handler router.Handler) router.Handler {
-	return func(msg *codec.Message, reply string) error {
+	return func(msg *codec.Message, reply string) *router.Error {
 		//log.Printf("logMsgwrapper -> message received: %v\n" , *msg)
 		log.Printf("[2] logMsgwrapper before")
 		err := handler(msg, reply)
@@ -28,7 +28,7 @@ func logMsgWrapper2(handler router.Handler) router.Handler {
 }
 
 func logMsgWrapper3(handler router.Handler) router.Handler {
-	return func(msg *codec.Message, reply string) error {
+	return func(msg *codec.Message, reply string) *router.Error {
 		//log.Printf("logMsgwrapper -> message received: %v\n" , *msg)
 		log.Printf("[3] logMsgwrapper before")
 		err := handler(msg, reply)
