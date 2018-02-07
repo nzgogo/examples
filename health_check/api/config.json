@@ -1,0 +1,5 @@
+{
+  "nats_addr": "nats://back.foundation.01.gogoexpress.co.nz:4222",
+  "consul_addr": "back.foundation.01.gogoexpress.co.nz",
+  "secret": "eQQPObNo3/vU0cGbb7f+rA=="
+}
