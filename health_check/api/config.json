@@ -1,5 +1,12 @@
 {
   "nats_addr": "nats://back.foundation.01.gogoexpress.co.nz:4222",
-  "consul_addr": "back.foundation.01.gogoexpress.co.nz",
-  "secret": "eQQPObNo3/vU0cGbb7f+rA=="
+  "consul_addr":"",
+  "secret": "eQQPObNo3/vU0cGbb7f+rA==",
+  "load_critical_threshold":"30",
+  "load_warning_threshold":"5",
+  "memory_critical_threshold":"5",
+  "memory_warning_threshold":"50",
+  "cpu_critical_threshold":"5",
+  "cpu_warning_threshold":"30",
+  "health_check_script":"/Users/Bruise/go/src/health_check_script/health_check_script"
 }

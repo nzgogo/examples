@@ -1,9 +1,8 @@
 package main
 
 import (
-	"fmt"
 	"log"
-
+	"net/http"
 	"github.com/nzgogo/micro"
 	"github.com/nzgogo/micro/codec"
 	"github.com/nzgogo/micro/router"
@@ -18,13 +17,19 @@ var (
 )
 
 func (s *server) Hello(req *codec.Message, reply string) *router.Error  {
-	fmt.Println("Message received: " + string(req.Body))
-	response := codec.NewResponse( req.ContextID, 200, []byte(responsecode), req.Header)
+	//fmt.Println("Message received: " + string(req.Body))
+	h := http.Header{}
+	h.Add("Content-Type", "text/plain")
+	response := codec.NewResponse( req.ContextID, 200, []byte(responsecode), h)
 	err := s.srv.Respond(response, reply)
-	return &router.Error{
-		200,
-		err.Error(),
+	if err !=nil {
+		return &router.Error{
+			500,
+			err.Error(),
+		}
 	}
+
+	return nil
 }
 
 func main() {
