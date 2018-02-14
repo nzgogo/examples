@@ -1,0 +1,14 @@
+{
+  "nats_addr": "nats://back.foundation.01.gogoexpress.co.nz:4222",
+  "consul_addr":"",
+  "secret": "eQQPObNo3/vU0cGbb7f+rA==",
+  "hc_load_critical_threshold":"30",
+  "hc_load_warning_threshold":"5",
+  "hc_memory_critical_threshold":"30",
+  "hc_memory_warning_threshold":"50",
+  "hc_cpu_critical_threshold":"5",
+  "hc_cpu_warning_threshold":"30",
+  "hc_script":"/Users/Bruise/go/src/health_check_script/health_check_script",
+  "hc_deregister_critical_service_after":"1m",
+  "hc_interval":"1m"
+}
