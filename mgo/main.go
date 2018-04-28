@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/globalsign/mgo"
 	"github.com/globalsign/mgo/bson"
-	"github.com/nzgogo/micro/db"
+	db "github.com/nzgogo/gmgo"
 	"log"
 	"reflect"
 	"fmt"
@@ -15,10 +15,10 @@ const (
 )
 
 var (
-	ProdCatC *db.MicroCollect
-	ProductC *db.MicroCollect
-	ItemC    *db.MicroCollect
-	SpecifC  *db.MicroCollect
+	ProdCatC *db.GCollect
+	ProductC *db.GCollect
+	ItemC    *db.GCollect
+	SpecifC  *db.GCollect
 )
 
 func main() {
@@ -33,9 +33,6 @@ func main() {
 
 	// Connect to specific Database
 	mgoDB := mgoSession.DB(TESTDB)
-	//ProdCatC = mgoDB.C("ProductCategory")
-	//ProductC = mgoDB.C("Product")
-	//SpecifC = mgoDB.C("Specification")
 	ItemC = mgoDB.C("Item")
 	ItemC.DropCollection()
 	ItemC = mgoDB.C("Item")
@@ -50,21 +47,29 @@ func main() {
 	}
 
 	// find
-	query := bson.M{"stock_reset": false}
+	// remove
+	selector := bson.M{}
+	b, _ := bson.Marshal(items[0])
+	bson.Unmarshal(b, selector)
+	delete(selector,"specification_categories")
+
 	results := []bson.M{}
 	result := bson.M{}
 
+	if err := ItemC.Collection.Find(selector).One(&result); err != nil {
+		log.Fatal("Find[4] not pass " + err.Error())
+	}
+
+	query := bson.M{"stock_reset": false}
 	if err := ItemC.Find(query).All(&results); err != nil {
 		log.Fatal("Find[1] not pass " + err.Error())
 	} else if len(results) != 2 {
 		log.Fatal("Find[2] not pass")
 	}
 
-
-	//if err := ItemC.Find(item).One(&); err != nil {
-	//	log.Fatal("Find not pass " + err.Error())
-	//}
-
+	if err := ItemC.Find(query).One(&result); err != nil {
+		log.Fatal("Find[3] not pass " + err.Error())
+	}
 
 	if err := ItemC.FindId(results[0]["_id"]).One(&result); err != nil {
 		log.Fatal("FindId[1] not pass " + err.Error())
@@ -76,10 +81,10 @@ func main() {
 	}
 
 	// remove
-	selector := bson.M{}
-	b, _ := bson.Marshal(items[0])
+	b, _ = bson.Marshal(items[0])
 	bson.Unmarshal(b, selector)
-	//log.Println(selector)
+	delete(selector,"specification_categories")
+
 	if err := ItemC.Remove(selector); err != nil {
 		log.Fatal("Remove[1] does not pass " + err.Error())
 	}
@@ -92,6 +97,7 @@ func main() {
 	if err := ItemC.RemoveId(result["_id"]); err != mgo.ErrNotFound {
 		log.Fatal("RemoveId[1] does not pass ")
 	}
+	delete(result,"specification_categories")
 	if err := ItemC.UpdateWithTrash(result, selector); err != nil {
 		log.Fatal("Remove[4] not pass " + err.Error())
 	}
@@ -104,6 +110,7 @@ func main() {
 	if err := ItemC.FindWithTrash(selector).One(result); err != nil {
 		log.Fatal("RemoveId[4] not pass " + err.Error())
 	}
+	delete(result,"specification_categories")
 	if err := ItemC.UpdateWithTrash(result, selector); err != nil {
 		log.Fatal("Remove[4] not pass")
 	}
@@ -130,6 +137,7 @@ func main() {
 		log.Fatal("FindWithTrash not pass")
 	}
 	for i := 0; i < len(items)-1; i++ {
+		delete(results[i],"specification_categories")
 		if err := ItemC.Update(results[i], items[i]); err != mgo.ErrNotFound {
 			log.Fatal("Update[1] not pass")
 		}
@@ -155,33 +163,55 @@ func main() {
 		log.Fatal("UpdateWithTrash[2] does not pass ")
 	}
 
-	//ItemC.UpdateParts()
-	//
 	if info,err := ItemC.UpdateAll(bson.M{"stock_reset_cycle":12},bson.M{"$set":bson.M{"stock_reset_cycle":13}}); err != nil {
 		log.Fatal("UpdateAll[1] does not pass " + err.Error())
 	} else if info.Updated != (len(items)-1) {
 		log.Fatal("UpdateAll[2] does not pass ")
 	}
 
+	// Upsert
+	if err := ItemC.Collection.Find(bson.M{"name_en":"coke"}).One(&result); err !=nil {
+		log.Fatal("Upsert[1] does not pass " + err.Error())
+	}
+	delete(result,"delete_at")
+	delete(result,"_id")
+	if _, err := ItemC.Upsert(bson.M{"name_en":"coke"}, result); err != nil {
+		log.Fatal("Upsert[2] does not pass " + err.Error())
+	}
+	if err := ItemC.Find(bson.M{"name_en":"coke"}).One(&result); err !=nil {
+		log.Fatal("Upsert[3] does not pass " + err.Error())
+	}
+	id:=result["_id"]
+	delete(result,"_id")
+	result["name_en"]="sprite"
+	if _, err := ItemC.UpsertId(id, result); err != nil {
+		log.Fatal("Upsert[4] does not pass " + err.Error())
+	}
+	if err := ItemC.FindId(id).One(&result); err !=nil {
+		log.Fatal("Upsert[5] does not pass " + err.Error())
+	}
+
 	// IncrementUpdate
-	//if info, err := ItemC.IncrementUpdateAll(); err != nil {
-	//	log.Fatal("IncrementUpdateAll does not pass " + err.Error())
-	//} else if info.Updated != len(items) {
-	//	log.Fatal("IncrementUpdateAll does not pass. ChangedInfo does not match " )
-	//}
-	//// increment update
-	//if err := ItemC.IncrementUpdate(); err !=nil {
-	//	log.Fatal("IncrementUpdate does not pass " + err.Error())
-	//}
-	//if err := ItemC.IncrementUpdateId(); err != nil {
-	//	log.Fatal("IncrementUpdateId does not pass " + err.Error())
-	//}
+	if err := ItemC.Find(bson.M{"newField":"newField"}).One(&result); err !=nil {
+		log.Fatal("IncrementUpdate[1] does not pass " + err.Error())
+	}
+	update := bson.M{"$set": bson.M{"contract_price": 1}}
+	delete(result,"specification_categories")
+	if err := ItemC.IncrementUpdate(result,update); err !=nil {
+		log.Fatal("IncrementUpdate[2] does not pass " + err.Error())
+	}
+	if err := ItemC.Find(bson.M{"newField":"newField"}).One(&result); err !=nil {
+		log.Fatal("IncrementUpdate[1] does not pass " + err.Error())
+	}
+	update = bson.M{"$set": bson.M{"contract_price": 2}}
+	if err := ItemC.IncrementUpdateId(result["_id"],update); err != nil {
+		log.Fatal("IncrementUpdateId[1] does not pass " + err.Error())
+	}
 
 	// IncreUpsert
 	//ItemC.IncreUpsert()
 	//ItemC.IncreUpsertId()
 
-	//ItemC.DropCollection()
 	fmt.Println("All tests passed")
 
 }
