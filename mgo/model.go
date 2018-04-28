@@ -5,44 +5,6 @@ import (
 	"time"
 )
 
-// Collection ProductCategory
-type ProductCategory struct {
-	Id            bson.ObjectId  `json:"id" bson:"_id,omitempty"`
-	NameEn        string         `json:"nameEn,omitempty" bson:"name_en,omitempty"`
-	NameCn        string         `json:"nameCn,omitempty" bson:"name_cn,omitempty"`
-	DescriptionEn string         `json:"descriptionEn,omitempty" bson:"description_en,omitempty"`
-	DescriptionCn string         `json:"descriptionCn,omitempty" bson:"description_cn,omitempty"`
-	Icon          string         `json:"icon,omitempty" bson:"icon,omitempty"`
-	IconGrey      string         `json:"iconGrey,omitempty" bson:"icon_grey,omitempty"`
-	MinQuantity   int64          `json:"minQuantity,omitempty" bson:"min_quantity,omitempty"`
-	ProductsInfos []*ProductInfo `json:"productsInfos,omitempty" bson:"products_infos,omitempty"`
-}
-type ProductInfo struct {
-	ProductID bson.ObjectId `json:"productID,omitempty" bson:"product_id,omitempty"`
-	Sort      int64         `json:"sort,omitempty" bson:"sort,omitempty"`
-}
-
-// Collection Product
-type Product struct {
-	Id                bson.ObjectId      `json:"id" bson:"_id,omitempty"`
-	NameEn            string             `json:"nameEn,omitempty" bson:"name_en,omitempty"`
-	NameCn            string             `json:"nameCn,omitempty" bson:"name_cn,omitempty"`
-	DescriptionEn     string             `json:"descriptionEn,omitempty" bson:"description_en,omitempty"`
-	DescriptionCn     string             `json:"descriptionCn,omitempty" bson:"description_cn,omitempty"`
-	Img               string             `json:"img,omitempty" bson:"img,omitempty"`
-	PriceFixed        int64              `json:"priceFixed,omitempty" bson:"price_fixed,omitempty"`
-	PriceRate         int64              `json:"priceRate,omitempty" bson:"price_rate,omitempty"`
-	PackingFee        int64              `json:"packingFee,omitempty" bson:"packing_fee,omitempty"`
-	MinQuantity       int64              `json:"minQuantity,omitempty" bson:"min_quantity,omitempty"`
-	MonthlySales      int64              `json:"monthlySales,omitempty" bson:"monthly_sales,omitempty"`
-	Rating            int64              `json:"rating,omitempty"`
-	ProductCategories []*ProductCategory `json:"productCategories,omitempty" bson:"product_categories,omitempty"`
-	Items             []*Item            `json:"items,omitempty" bson:"items,omitempty"`
-	//ProductCategoriesId []bson.ObjectId `json:"productCategoriesId" bson:"product_categories_id,omitempty"`
-	//ItemsId             []bson.ObjectId `json:"itemId" bson:"item_id,omitempty"`
-
-}
-
 // Collection Item
 type Item struct {
 	Id                      bson.ObjectId           `json:"id" bson:"_id,omitempty"`

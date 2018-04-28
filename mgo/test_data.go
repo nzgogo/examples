@@ -149,10 +149,4 @@ var (
 		},
 	}
 
-	products = []Product{
-		{
-			NameEn: "dongpo set",
-			NameCn: "眉州东坡份饭",
-		},
-	}
 )

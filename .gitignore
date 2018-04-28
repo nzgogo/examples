@@ -29,3 +29,4 @@ test/
 mgo/order.json
 mgo/order_detail.json
 mgo/order_status.json
+mgo/constant.go

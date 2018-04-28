@@ -9,16 +9,8 @@ import (
 	"fmt"
 )
 
-const (
-	url    = "mongodb://qiekai:pbklYdJ4WrP7X3GZ@gogotest-shard-00-00-ntrrw.mongodb.net:27017,gogotest-shard-00-01-ntrrw.mongodb.net:27017,gogotest-shard-00-02-ntrrw.mongodb.net:27017/test?ssl=true&replicaSet=GOGOTEST-shard-0&authSource=admin"
-	TESTDB = "test"
-)
-
 var (
-	ProdCatC *db.GCollect
-	ProductC *db.GCollect
 	ItemC    *db.GCollect
-	SpecifC  *db.GCollect
 )
 
 func main() {
