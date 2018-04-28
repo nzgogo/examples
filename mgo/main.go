@@ -1,21 +1,20 @@
 package main
 
 import (
-	"github.com/globalsign/mgo"
-	"github.com/globalsign/mgo/bson"
-	db "github.com/nzgogo/gmgo"
+	"github.com/nzgogo/mgo/bson"
+	"github.com/nzgogo/mgo"
 	"log"
 	"reflect"
 	"fmt"
 )
 
 var (
-	ItemC    *db.GCollect
+	ItemC    *mgo.GCollect
 )
 
 func main() {
 	// Create Mgo Session
-	mgoSession := db.NewMongoDB(url)
+	mgoSession := mgo.NewMongoDB(url)
 
 	log.Println("Connecting to MongoDB...")
 	if err := mgoSession.Connect(); err != nil {
@@ -26,6 +25,7 @@ func main() {
 	// Connect to specific Database
 	mgoDB := mgoSession.DB(TESTDB)
 	ItemC = mgoDB.C("Item")
+
 	ItemC.DropCollection()
 	ItemC = mgoDB.C("Item")
 	// insertion
