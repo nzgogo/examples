@@ -1,8 +1,8 @@
 package main
 
 import (
-	"time"
 	"github.com/globalsign/mgo/bson"
+	"time"
 )
 
 var (
@@ -11,7 +11,7 @@ var (
 
 	items = []Item{
 		{
-			Id:				bson.NewObjectId(),
+			Id:              bson.NewObjectId(),
 			NameEn:          "nianweilapin",
 			NameCn:          "年味儿腊拼",
 			ContractPrice:   62,
@@ -21,16 +21,16 @@ var (
 			StockReset:      &vfalse,
 			StockResetCycle: 12,
 			StockResetTime:  time.Now(),
-			SpecificationCategories: []SpecificationCategory {
+			SpecificationCategories: []SpecificationCategory{
 				{
-					NameEn         :"Flavor",
-					NameCn         :"口味",
-					Required       :true,
-					Multiple       : true,
-					MinQuantity    :2,
-					MaxQuantity    :10,
-					IsLocked       :true,
-					SpecificationsId :[]bson.ObjectId{
+					NameEn:      "Flavor",
+					NameCn:      "口味",
+					Required:    true,
+					Multiple:    true,
+					MinQuantity: 2,
+					MaxQuantity: 10,
+					IsLocked:    true,
+					SpecificationsId: []bson.ObjectId{
 						bson.ObjectIdHex("5ad5d8411a80a30a43066832"),
 						bson.ObjectIdHex("5ad5d8411a80a30a43066835"),
 					},
@@ -38,7 +38,7 @@ var (
 			},
 		},
 		{
-			Id:				bson.NewObjectId(),
+			Id:              bson.NewObjectId(),
 			NameEn:          "55nianchaunjialuya",
 			NameCn:          "55年传家卤鹅",
 			ContractPrice:   70,
@@ -48,16 +48,16 @@ var (
 			StockReset:      &vfalse,
 			StockResetCycle: 12,
 			StockResetTime:  time.Now(),
-			SpecificationCategories: []SpecificationCategory {
+			SpecificationCategories: []SpecificationCategory{
 				{
-					NameEn         :"Size",
-					NameCn         :"分量",
-					Required       :true,
-					Multiple       : true,
-					MinQuantity    :2,
-					MaxQuantity    :10,
-					IsLocked       :true,
-					SpecificationsId :[]bson.ObjectId{
+					NameEn:      "Size",
+					NameCn:      "分量",
+					Required:    true,
+					Multiple:    true,
+					MinQuantity: 2,
+					MaxQuantity: 10,
+					IsLocked:    true,
+					SpecificationsId: []bson.ObjectId{
 						bson.ObjectIdHex("5ad5d8411a80a30a43066832"),
 						bson.ObjectIdHex("5ad5d8411a80a30a43066835"),
 					},
@@ -74,16 +74,16 @@ var (
 			StockReset:      &vtrue,
 			StockResetCycle: 12,
 			StockResetTime:  time.Now(),
-			SpecificationCategories: []SpecificationCategory {
+			SpecificationCategories: []SpecificationCategory{
 				{
-					NameEn         :"Flavor",
-					NameCn         :"口味",
-					Required       :true,
-					Multiple       : true,
-					MinQuantity    :2,
-					MaxQuantity    :10,
-					IsLocked       :true,
-					SpecificationsId :[]bson.ObjectId{
+					NameEn:      "Flavor",
+					NameCn:      "口味",
+					Required:    true,
+					Multiple:    true,
+					MinQuantity: 2,
+					MaxQuantity: 10,
+					IsLocked:    true,
+					SpecificationsId: []bson.ObjectId{
 						bson.ObjectIdHex("5ad5d8411a80a30a43066832"),
 						bson.ObjectIdHex("5ad5d8411a80a30a43066835"),
 					},
@@ -100,15 +100,15 @@ var (
 			StockReset:      &vtrue,
 			StockResetCycle: 12,
 			StockResetTime:  time.Now(),
-			SpecificationCategories: []SpecificationCategory {
+			SpecificationCategories: []SpecificationCategory{
 				{
-					NameEn         :"Size",
-					NameCn         :"分量",
-					Required       :true,
-					Multiple       : true,
-					MinQuantity    :1,
-					MaxQuantity    :1,
-					IsLocked       :true,
+					NameEn:      "Size",
+					NameCn:      "分量",
+					Required:    true,
+					Multiple:    true,
+					MinQuantity: 1,
+					MaxQuantity: 1,
+					IsLocked:    true,
 					//SpecificationsId :[]bson.ObjectId{
 					//	bson.ObjectIdHex("5ad5d8411a80a30a43066832"),
 					//	bson.ObjectIdHex("5ad5d8411a80a30a43066835"),
@@ -148,5 +148,4 @@ var (
 			IsLocked:    false,
 		},
 	}
-
 )
