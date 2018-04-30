@@ -80,10 +80,10 @@ func main() {
 	if err := ItemC.Remove(selector); err != nil {
 		log.Fatal("Remove[1] does not pass " + err.Error())
 	}
-	if err := ItemC.Find(selector).One(result); err != mgo.ErrNotFound {
+	if err := ItemC.Find(selector).One(&result); err != mgo.ErrNotFound {
 		log.Fatal("Remove[2] not pass")
 	}
-	if err := ItemC.FindWithTrash(selector).One(result); err != nil {
+	if err := ItemC.FindWithTrash(selector).One(&result); err != nil {
 		log.Fatal("Remove[3] not pass " + err.Error())
 	}
 	if err := ItemC.RemoveId(result["_id"]); err != mgo.ErrNotFound {
@@ -96,10 +96,10 @@ func main() {
 	if err := ItemC.RemoveId(result["_id"]); err != nil {
 		log.Fatal("RemoveId[2] does not pass ")
 	}
-	if err := ItemC.Find(selector).One(result); err != mgo.ErrNotFound {
+	if err := ItemC.Find(selector).One(&result); err != mgo.ErrNotFound {
 		log.Fatal("RemoveId[3] not pass ")
 	}
-	if err := ItemC.FindWithTrash(selector).One(result); err != nil {
+	if err := ItemC.FindWithTrash(selector).One(&result); err != nil {
 		log.Fatal("RemoveId[4] not pass " + err.Error())
 	}
 	delete(result,"specification_categories")
@@ -165,7 +165,7 @@ func main() {
 	if err := ItemC.Collection.Find(bson.M{"name_en":"coke"}).One(&result); err !=nil {
 		log.Fatal("Upsert[1] does not pass " + err.Error())
 	}
-	delete(result,"delete_at")
+	delete(result,"deleted_at")
 	delete(result,"_id")
 	if _, err := ItemC.Upsert(bson.M{"name_en":"coke"}, result); err != nil {
 		log.Fatal("Upsert[2] does not pass " + err.Error())
