@@ -7,6 +7,14 @@ import (
 	"github.com/nzgogo/micro/codec"
 )
 
+func (s *MyHandler) logWrapper(wrapper gogo.HttpHandlerFunc) gogo.HttpHandlerFunc {
+	return func(w http.ResponseWriter, r *http.Request) {
+		log.Println("[1] HttpHandlerWrapper before")
+		wrapper(w, r)
+		log.Println("[1] HttpHandlerWrapper after")
+	}
+}
+
 func logWrapper(wrapper gogo.HttpHandlerFunc) gogo.HttpHandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		log.Println("[1] HttpHandlerWrapper before")

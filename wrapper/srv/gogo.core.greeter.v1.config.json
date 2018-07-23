@@ -1,0 +1,12 @@
+{
+  "nats_addr": "",
+  "consul_addr":"",
+  "slack_webhook_url": "https://hooks.slack.com/services/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",
+  "hc_load_critical_threshold":"30",
+  "hc_load_warning_threshold":"20",
+  "hc_memory_critical_threshold":"5",
+  "hc_memory_warning_threshold":"15",
+  "hc_script":"gghc",
+  "hc_deregister_critical_service_after":"10s",
+  "hc_interval":"10s"
+}
