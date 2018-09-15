@@ -12,6 +12,7 @@ An example Greeter application
 
 - Consul
 - NATS
+- Health Check Script
 
 ### Consul
 
@@ -26,6 +27,23 @@ $ go get github.com/nats
 $ gnatsd
 ```
 
+### Health Check Script
+One of the primary roles of the Consul agent is management of system-level and application-level health checks. There are several different kinds of checks, see Checks Definition. The kind of check used in micro is [Script + Interval](https://www.consul.io/docs/agent/checks.html).
+[Check Scripts](https://www.consul.io/docs/agent/checks.html#check-scripts)
+To get started quickly, we define a script that always return with passing:
+```shell
+$ vim /etc/gogo/healthcheck.sh
+```
+```shell
+#!/bin/sh
+# A health check script that always return 0 (Passing).
+exit 0
+```
+```shell
+$ chmod +x /etc/consul/healthcheck.sh
+```
+```shell
+
 ## Run Greeter
 ### Service Configurations
 An example of servce configuration file:
@@ -37,7 +55,7 @@ An example of servce configuration file:
 "hc_load_warning_threshold":"2",
 "hc_memory_critical_threshold":"5",
 "hc_memory_warning_threshold":"10",
-"hc_script":"gghc",
+"hc_script":"/etc/gogo/healthcheck.sh",
 "hc_deregister_critical_service_after":"2m",
 "hc_interval":"1m"
 }

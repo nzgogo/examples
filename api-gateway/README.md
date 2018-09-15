@@ -22,7 +22,7 @@ An example of servce configuration file:
 "hc_load_warning_threshold":"2",
 "hc_memory_critical_threshold":"5",
 "hc_memory_warning_threshold":"10",
-"hc_script":"gghc",
+"hc_script":"/etc/consul/healthcheck.sh",
 "hc_deregister_critical_service_after":"2m",
 "hc_interval":"1m"
 }
