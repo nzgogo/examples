@@ -13,11 +13,14 @@ import (
 func CreateUser(msg *codec.Message, reply string) *router.Error {
 	user := db.User{}
 	if err := user.Insert(); err != nil {
-		return &router.Error{http.StatusInternalServerError, err.Error()}
+		return &router.Error{StatusCode: http.StatusInternalServerError, Message: err.Error()}
 	}
 
 	resp := codec.NewJsonResponse(msg.ContextID, http.StatusCreated)
-	globals.Service.Respond(resp, reply)
+	globals.ContextCnt.Desc()
+	if err := globals.Service.Respond(resp, reply); err != nil {
+		return &router.Error{StatusCode: http.StatusInternalServerError, Message: err.Error()}
+	}
 
 	return nil
 }
